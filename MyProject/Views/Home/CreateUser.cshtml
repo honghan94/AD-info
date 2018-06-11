@@ -1,0 +1,25 @@
+﻿@model MyProject.Controllers.CreateModel
+
+@{
+    ViewBag.Title = "CreateUser";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>CreateUser</h2>
+
+
+@using (Ajax.BeginForm("PCreateUser", "Home", new AjaxOptions
+{
+    HttpMethod = "Post",
+    UpdateTargetId = "dvPartialCreate",
+    LoadingElementId = "load-ajax"
+}))
+{
+
+    <div id="dvPartialCreate">
+        @Html.Partial("_CreateUser")
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="button" class="btn btn-default" onclick="window.location='@Url.Action("Info", "Home")'">Close</button>
+}
